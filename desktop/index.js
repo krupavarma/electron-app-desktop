@@ -40,8 +40,8 @@ app.on('ready', () => {
   mainWindow.on('closed', function() {
     mainWindow = null;
   });
-  const server = 'https://github.com/krupavarma/electron-app-desktop/releases';
-  const feed = server + '/latest';
+  const server = 'https://github.com/krupavarma/electron-app-desktop';
+  const feed = server + '/releases';
   autoUpdater.setFeedURL(feed);
   setInterval(() => {
     autoUpdater.checkForUpdates();
