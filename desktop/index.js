@@ -27,7 +27,7 @@ app.on('ready', () => {
     icon: 'favicon.ico',
     title: 'App'
   });
-
+  // changes
   mainWindow.setMenu(null);
   mainWindow.maximize();
 
