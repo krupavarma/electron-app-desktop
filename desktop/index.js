@@ -1,6 +1,6 @@
 const electron = require('electron');
-const dialog = require('electron');
-const autoUpdater = require('electron');
+const { dialog } = require('electron');
+const { autoUpdater } = require('electron');
 require('update-electron-app')({
   repo: 'https://github.com/krupavarma/electron-app-desktop',
   updateInterval: '5 minutes',
@@ -42,7 +42,7 @@ app.on('ready', () => {
     mainWindow = null;
   });
   const server = 'https://github.com/myuser/MyApp/releases';
-  const feed = `${server}/latest/${process.platform}/${app.getVersion()}`;
+  const feed = server + '/latest';
   autoUpdater.setFeedURL(feed);
   setInterval(() => {
     autoUpdater.checkForUpdates();
