@@ -4,6 +4,7 @@
   "bundle": "app",
   "description": "",
   "main": "desktop/index.js",
+  "repository": "https://github.com/krupavarma/electron-app-desktop",
   "scripts": {
     "start": "electron .",
     "pack": "electron-builder --dir",
@@ -18,5 +19,8 @@
     "electron": "^6.0.10",
     "electron-packager": "^14.0.6",
     "electron-builder": "^21.2.0"
+  },
+  "dependencies": {
+    "update-electron-app": "^1.5.0"
   }
 }

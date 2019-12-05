@@ -1,6 +1,11 @@
 const electron = require('electron');
 const dialog = require('electron');
 const autoUpdater = require('electron');
+require('update-electron-app')({
+  repo: 'https://github.com/krupavarma/electron-app-desktop',
+  updateInterval: '5 minutes',
+  logger: require('electron-log')
+});
 // Module to control application life.
 const app = electron.app;
 
