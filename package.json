@@ -1,0 +1,22 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "bundle": "app",
+  "description": "",
+  "main": "desktop/index.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "build:mac": "electron-builder build --mac",
+    "build:win": "electron-builder build --windows",
+    "build:linux": "electron-builder build --linux",
+    "deploy": "electron-builder build --win --publish always"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^6.0.10",
+    "electron-packager": "^14.0.6",
+    "electron-builder": "^21.2.0"
+  }
+}
