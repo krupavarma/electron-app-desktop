@@ -3,8 +3,7 @@ const { dialog } = require('electron');
 const { autoUpdater } = require('electron');
 require('update-electron-app')({
   repo: 'https://github.com/krupavarma/electron-app-desktop',
-  updateInterval: '5 minutes',
-  logger: require('electron-log')
+  updateInterval: '5 minutes'
 });
 // Module to control application life.
 const app = electron.app;
@@ -41,7 +40,7 @@ app.on('ready', () => {
   mainWindow.on('closed', function() {
     mainWindow = null;
   });
-  const server = 'https://github.com/myuser/MyApp/releases';
+  const server = 'https://github.com/krupavarma/electron-app-desktop/releases';
   const feed = server + '/latest';
   autoUpdater.setFeedURL(feed);
   setInterval(() => {
