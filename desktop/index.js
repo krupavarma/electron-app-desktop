@@ -36,8 +36,8 @@ app.on('ready', () => {
   mainWindow.on('closed', function() {
     mainWindow = null;
   });
-  const server = 'https://gitlab.com/krupavarma/electron-app.git';
-  const feed = `${server}/update/${process.platform}/${app.getVersion()}`;
+  const server = 'https://github.com/myuser/MyApp/releases';
+  const feed = `${server}/latest/${process.platform}/${app.getVersion()}`;
   autoUpdater.setFeedURL(feed);
   setInterval(() => {
     autoUpdater.checkForUpdates();
