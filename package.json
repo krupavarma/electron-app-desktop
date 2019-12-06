@@ -1,6 +1,6 @@
 {
   "name": "app",
-  "version": "1.0.0",
+  "version": "4.0",
   "bundle": "app",
   "description": "",
   "main": "desktop/index.js",
@@ -11,7 +11,7 @@
     "build:mac": "electron-builder build --mac",
     "build:win": "electron-builder build --windows",
     "build:linux": "electron-builder build --linux",
-    "deploy": "electron-builder build --win --publish always"
+    "deploy": "electron-builder build --windows --publish always"
   },
   "author": "",
   "license": "ISC",
