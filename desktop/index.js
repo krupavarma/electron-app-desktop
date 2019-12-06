@@ -1,6 +1,8 @@
 const electron = require('electron');
 const { dialog } = require('electron');
-const { autoUpdater } = require('electron');
+const { autoUpdater } = require('electron-updater');
+
+const { Menu, protocol, ipcMain } = require('electron');
 require('update-electron-app')({
   repo: 'https://github.com/krupavarma/electron-app-desktop',
   updateInterval: '5 minutes'
@@ -13,11 +15,36 @@ const BrowserWindow = electron.BrowserWindow;
 
 const path = require('path');
 const url = require('url');
-
+autoUpdater.logger = log;
+autoUpdater.logger.transports.file.level = 'info';
+log.info('App starting...');
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-var mainWindow;
+let win;
 
+function sendStatusToWindow(text) {
+  log.info(text);
+  win.webContents.send('message', text);
+}
+var mainWindow;
+autoUpdater.on('checking-for-update', () => {
+  sendStatusToWindow('Checking for update...');
+});
+autoUpdater.on('update-available', (ev, info) => {
+  sendStatusToWindow('Update available.');
+});
+autoUpdater.on('update-not-available', (ev, info) => {
+  sendStatusToWindow('Update not available.');
+});
+autoUpdater.on('error', (ev, err) => {
+  sendStatusToWindow('Error in auto-updater.');
+});
+autoUpdater.on('download-progress', (ev, progressObj) => {
+  sendStatusToWindow('Download progress...');
+});
+autoUpdater.on('update-downloaded', (ev, info) => {
+  sendStatusToWindow('Update downloaded; will install in 5 seconds');
+});
 app.on('ready', () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
@@ -45,7 +72,8 @@ app.on('ready', () => {
   autoUpdater.setFeedURL(server);
   setInterval(() => {
     autoUpdater.checkForUpdates();
-  }, 60000);
+    console.log('check updates');
+  }, 1000);
   autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
     const dialogOpts = {
       type: 'info',
@@ -82,6 +110,17 @@ app.on('activate', function() {
   if (mainWindow === null) {
     createWindow();
   }
+});
+autoUpdater.on('update-downloaded', (ev, info) => {
+  // Wait 5 seconds, then quit and install
+  // In your application, you don't need to wait 5 seconds.
+  // You could call autoUpdater.quitAndInstall(); immediately
+  setTimeout(function() {
+    autoUpdater.quitAndInstall();
+  }, 5000);
+});
+app.on('ready', function() {
+  autoUpdater.checkForUpdates();
 });
 
 // In this file you can include the rest of your app's specific main process
