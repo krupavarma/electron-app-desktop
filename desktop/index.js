@@ -21,7 +21,6 @@ let win;
 
 function sendStatusToWindow(text) {
   console.log('message', text);
-  alert('message', text);
 }
 var mainWindow;
 autoUpdater.on('checking-for-update', () => {
