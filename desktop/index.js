@@ -16,13 +16,11 @@ const BrowserWindow = electron.BrowserWindow;
 const path = require('path');
 const url = require('url');
 autoUpdater.logger.transports.file.level = 'info';
-log.info('App starting...');
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
 
 function sendStatusToWindow(text) {
-  log.info(text);
   win.webContents.send('message', text);
 }
 var mainWindow;
