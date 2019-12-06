@@ -41,8 +41,8 @@ app.on('ready', () => {
     mainWindow = null;
   });
   const server = 'https://github.com/krupavarma/electron-app-desktop';
-  const feed = server + '/releases';
-  autoUpdater.setFeedURL(feed);
+  // const feed = server + '/releases';
+  autoUpdater.setFeedURL(server);
   setInterval(() => {
     autoUpdater.checkForUpdates();
   }, 60000);
