@@ -1,6 +1,6 @@
 const electron = require('electron');
 const { dialog } = require('electron');
-const { autoUpdater } = require('electron-updater');
+const { autoUpdater } = require('electron');
 
 const { Menu, protocol, ipcMain } = require('electron');
 require('update-electron-app')({
