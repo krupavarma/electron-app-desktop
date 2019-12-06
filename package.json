@@ -1,6 +1,6 @@
 {
   "name": "app",
-  "version": "5.0",
+  "version": "6.0",
   "bundle": "app",
   "description": "",
   "main": "desktop/index.js",
